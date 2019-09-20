@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/doce_dp"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edTitle"
+        android:layout_width="@dimen/trecientos_dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/doce_dp"
+        android:hint="@string/title"
+        android:inputType="textPersonName"
+        android:layout_gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edContent"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/doce_dp"
+        android:hint="@string/content"
+        android:inputType="textMultiLine"
+        android:layout_gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edTitle" />
+
+    <Switch
+        android:id="@+id/switchNoteFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/doce_dp"
+        android:switchPadding="@dimen/dieciseis_dp"
+        android:text="@string/favorite"
+        android:layout_gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edContent" />
+
+</LinearLayout>
