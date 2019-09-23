@@ -12,7 +12,6 @@ import com.example.room.db.entities.NoteEntity
 
 class NewNoteFragment : DialogFragment() {
 
-    private lateinit var viewModel: NewNoteViewModel
     private var etTitle: EditText? = null
     private var etContent:EditText? = null
     private var swNoteFavorite: Switch? = null

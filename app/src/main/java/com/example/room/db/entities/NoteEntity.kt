@@ -1,5 +1,6 @@
 package com.example.room.db.entities
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -9,8 +10,13 @@ class NoteEntity(title: String, content:String, favorite: Boolean) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 
+    @ColumnInfo(name = "title")
     var title: String? = null
+
+    @ColumnInfo(name = "content")
     var content: String? = null
+
+    @ColumnInfo(name = "favorite")
     var favorite: Boolean = false
 
     init{
@@ -18,5 +24,4 @@ class NoteEntity(title: String, content:String, favorite: Boolean) {
         this.content = content
         this.favorite = favorite
     }
-
 }

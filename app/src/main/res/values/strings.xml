@@ -7,4 +7,10 @@
     <string name="title">Titulo</string>
     <string name="content">Cotenido</string>
     <string name="favorite">¿La nota es favorita?</string>
+    <string name="entrar">Entrar</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="email">Email</string>
+    <string name="mynotes">MyNotes</string>
+    <string name="registrarme">Registrarme</string>
+    <string name="register">Registrar</string>
 </resources>

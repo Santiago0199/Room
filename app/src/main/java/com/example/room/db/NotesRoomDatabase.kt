@@ -8,13 +8,16 @@ import com.example.room.db.entities.NoteEntity
 import androidx.room.Room
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.room.R
+import com.example.room.db.dao.UserDao
+import com.example.room.db.entities.UserEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(NoteEntity::class), version = 1)
+@Database(entities = arrayOf(NoteEntity::class, UserEntity::class), version = 1)
 abstract class NotesRoomDatabase: RoomDatabase() {
 
     abstract fun noteDao(): NoteDao
+    abstract fun userDao(): UserDao
 
     companion object{
 

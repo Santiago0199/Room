@@ -1,5 +1,6 @@
 package com.example.room.db.entities
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -9,7 +10,10 @@ class UserEntity(email: String, pasword: String) {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 
+    @ColumnInfo(name = "email")
     var email: String = ""
+
+    @ColumnInfo(name = "password")
     var password: String = ""
 
     init {
