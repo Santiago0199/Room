@@ -1,4 +1,4 @@
-package com.example.room.ui.favorites
+package com.example.room.ui.menu_navigation.favorites
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

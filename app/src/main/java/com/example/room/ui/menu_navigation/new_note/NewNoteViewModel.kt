@@ -1,4 +1,4 @@
-package com.example.room.ui.new_note
+package com.example.room.ui.menu_navigation.new_note
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

@@ -1,12 +1,12 @@
-package com.example.room
+package com.example.room.ui.user.new_user
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
+import com.example.room.R
 import com.example.room.db.entities.UserEntity
-import com.example.room.ui.NewUserViewModel
 
 class NewUserActivity : AppCompatActivity() {
 
@@ -20,7 +20,8 @@ class NewUserActivity : AppCompatActivity() {
 
         reg.setOnClickListener {
             val viewModelUser = ViewModelProviders.of(this).get(NewUserViewModel::class.java)
-            viewModelUser.insert(UserEntity(email = email.text.toString(), pasword = password.text.toString()))
+            viewModelUser.insert(UserEntity(email = email.text.toString(), password = password.text.toString()))
+            finish()
         }
     }
 }

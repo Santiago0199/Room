@@ -1,5 +1,6 @@
 package com.example.room.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -11,6 +12,10 @@ interface UserDao {
     @Insert
     suspend fun insert(user: UserEntity)
 
-    @Query("SELECT * FROM usuarios WHERE email = :email AND password = :password LIMIT 1")
-    fun findUser(email: String, password: String)
+    @Query("SELECT * FROM users WHERE email = :email AND password = :password LIMIT 1")
+    fun findUser(email: String, password: String):LiveData<UserEntity>
+
+    @Query("SELECT * FROM users ORDER BY email ASC")
+    fun getAll():LiveData<List<UserEntity>>
+
 }

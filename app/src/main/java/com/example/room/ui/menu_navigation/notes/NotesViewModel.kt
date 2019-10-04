@@ -1,4 +1,4 @@
-package com.example.room.ui.notes
+package com.example.room.ui.menu_navigation.notes
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.room.NotesRepository
 import com.example.room.db.NotesRoomDatabase
 import com.example.room.db.entities.NoteEntity
-import kotlinx.coroutines.launch
+import com.example.room.db.entities.UserEntity
 
 class NotesViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -19,4 +19,10 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
         repository = NotesRepository(noteDao)
         allNotes = repository.allNotes
     }
+
+    fun getByUser(idUser: Long): LiveData<List<NoteEntity>>{
+        return repository.getByUser(idUser)
+    }
+
+
 }

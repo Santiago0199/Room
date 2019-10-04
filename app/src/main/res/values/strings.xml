@@ -3,7 +3,7 @@
     <string name="title_activity_notes">NotesActivity</string>
     <string name="title_notes">Notas</string>
     <string name="title_favorites">Favoritas</string>
-    <string name="title_profile">Mi Perfil</string>
+    <string name="title_users">Usuarios</string>
     <string name="title">Titulo</string>
     <string name="content">Cotenido</string>
     <string name="favorite">¿La nota es favorita?</string>
@@ -13,4 +13,5 @@
     <string name="mynotes">MyNotes</string>
     <string name="registrarme">Registrarme</string>
     <string name="register">Registrar</string>
+    <string name="registro">Registro</string>
 </resources>

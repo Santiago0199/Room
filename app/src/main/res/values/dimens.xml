@@ -5,6 +5,17 @@
     <dimen name="ocho_dp">8dp</dimen>
     <dimen name="cinco_dp">5dp</dimen>
     <dimen name="doce_dp">12dp</dimen>
-    <dimen name="trecientos_dp">300dp</dimen>
     <dimen name="dieciseis_dp">16dp</dimen>
+    <dimen name="veinticinco_dp">20dp</dimen>
+    <dimen name="cincuenta_dp">50dp</dimen>
+    <dimen name="cien_dp">100dp</dimen>
+    <dimen name="treintaydos_dp">32dp</dimen>
+    <dimen name="ochenta_dp">80dp</dimen>
+    <dimen name="treintayocho_dp">38dp</dimen>
+    <dimen name="treinta_sp">30sp</dimen>
+    <dimen name="cero_dp">0dp</dimen>
+    <dimen name="trecientos_dp">300dp</dimen>
+    <dimen name="uno_dp">1dp</dimen>
+    <dimen name="treinta_px">30px</dimen>
+    <dimen name="veinte_px">20px</dimen>
 </resources>

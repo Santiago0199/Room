@@ -1,7 +1,8 @@
-package com.example.room.ui
+package com.example.room.ui.user.new_user
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.room.UsersRepository
 import com.example.room.db.NotesRoomDatabase
@@ -20,8 +21,8 @@ class NewUserViewModel(application: Application): AndroidViewModel(application) 
         usersRepository = UsersRepository(userDao)
     }
 
-    fun findUser(email: String, password: String){
-        usersRepository.findUser(email, password)
+    fun findUser(email: String, password: String): LiveData<UserEntity> {
+        return usersRepository.findUser(email, password)
     }
 
     fun insert(user: UserEntity) = viewModelScope.launch{

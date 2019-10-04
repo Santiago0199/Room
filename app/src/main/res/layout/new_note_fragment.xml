@@ -21,7 +21,7 @@
 
     <EditText
         android:id="@+id/edContent"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/trecientos_dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/doce_dp"
         android:hint="@string/content"

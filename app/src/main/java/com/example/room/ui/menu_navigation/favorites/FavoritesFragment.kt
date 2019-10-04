@@ -1,4 +1,4 @@
-package com.example.room.ui.favorites
+package com.example.room.ui.menu_navigation.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.room.NotesAdapter
+import com.example.room.ui.adapter.NotesAdapter
 import com.example.room.R
 import com.example.room.db.entities.NoteEntity
 

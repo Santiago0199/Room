@@ -1,4 +1,4 @@
-package com.example.room.ui.notes
+package com.example.room.ui.menu_navigation.notes
 
 import android.os.Bundle
 import android.view.*
@@ -7,10 +7,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.room.NotesAdapter
+import com.example.room.Main
+import com.example.room.ui.adapter.NotesAdapter
 import com.example.room.R
 import com.example.room.db.entities.NoteEntity
-import com.example.room.ui.new_note.NewNoteFragment
+import com.example.room.db.entities.UserEntity
+import com.example.room.ui.menu_navigation.new_note.NewNoteFragment
 
 class NotesFragment : Fragment() {
 
@@ -23,7 +25,6 @@ class NotesFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_notes, container, false)
         setHasOptionsMenu(true)
-
         if (root is RecyclerView) {
             recycler = root
             listNotes = ArrayList()
@@ -38,7 +39,7 @@ class NotesFragment : Fragment() {
 
     private fun launchViewModel() {
         notesViewModel = ViewModelProviders.of(activity!!).get(NotesViewModel::class.java)
-        notesViewModel.allNotes.observe(activity!!, Observer { listNotes ->
+        notesViewModel.getByUser(Main.user!!.id).observe(activity!!, Observer { listNotes ->
             listNotes?.let {
                 adapter.setListNotes(it)
             }

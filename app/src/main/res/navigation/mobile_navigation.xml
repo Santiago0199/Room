@@ -7,20 +7,20 @@
 
     <fragment
         android:id="@+id/navigation_notes"
-        android:name="com.example.room.ui.notes.NotesFragment"
+        android:name="com.example.room.ui.menu_navigation.notes.NotesFragment"
         android:label="@string/title_notes"
         tools:layout="@layout/fragment_notes" />
 
     <fragment
         android:id="@+id/navigation_favorites"
-        android:name="com.example.room.ui.favorites.FavoritesFragment"
+        android:name="com.example.room.ui.menu_navigation.favorites.FavoritesFragment"
         android:label="@string/title_favorites"
         tools:layout="@layout/fragment_favorites" />
 
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.example.room.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/navigation_users"
+        android:name="com.example.room.ui.menu_navigation.users.UserFragment"
+        android:label="@string/title_users"
+        tools:layout="@layout/fragment_users" />
 
 </navigation>

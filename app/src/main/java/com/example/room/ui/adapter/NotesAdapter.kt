@@ -1,4 +1,4 @@
-package com.example.room
+package com.example.room.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
+import com.example.room.R
 import com.example.room.db.entities.NoteEntity
 
 class NotesAdapter(items: List<NoteEntity>): RecyclerView.Adapter<NotesAdapter.ViewHolder>() {

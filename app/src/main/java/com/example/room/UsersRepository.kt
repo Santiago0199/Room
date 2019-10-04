@@ -1,12 +1,15 @@
 package com.example.room
 
+import androidx.lifecycle.LiveData
 import com.example.room.db.dao.UserDao
 import com.example.room.db.entities.UserEntity
 
 class UsersRepository(private val userDao: UserDao) {
 
-    fun findUser(email: String, password: String){
-        userDao.findUser(email, password)
+    val allUsers: LiveData<List<UserEntity>> = userDao.getAll()
+
+    fun findUser(email: String, password: String): LiveData<UserEntity> {
+        return userDao.findUser(email, password)
     }
 
     suspend fun insert(user: UserEntity){

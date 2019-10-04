@@ -1,14 +1,17 @@
-package com.example.room.ui.new_note
+package com.example.room.ui.menu_navigation.new_note
 
 import android.app.Dialog
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.DialogFragment
 import com.example.room.R
 import android.widget.Switch
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import com.example.room.Main
 import com.example.room.db.entities.NoteEntity
+import com.example.room.db.entities.UserEntity
 
 class NewNoteFragment : DialogFragment() {
 
@@ -17,6 +20,7 @@ class NewNoteFragment : DialogFragment() {
     private var swNoteFavorite: Switch? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
         // Use the Builder class for convenient dialog construction
         val builder = AlertDialog.Builder(activity!!)
 
@@ -25,12 +29,12 @@ class NewNoteFragment : DialogFragment() {
             .setPositiveButton("Guardar"){ dialog, id ->
 
                 val title = etTitle!!.text.toString()
-                val contenido = etContent!!.getText().toString()
-                val esFavorita = swNoteFavorite!!.isChecked
+                val content = etContent!!.getText().toString()
+                val isFavorite = swNoteFavorite!!.isChecked
 
                 // Comunicar al ViewModel el nuevo dato.
                 val mViewModel = ViewModelProviders.of(activity!!).get(NewNoteViewModel::class.java!!)
-                mViewModel.insert(NoteEntity(title, contenido, esFavorita))
+                mViewModel.insert(NoteEntity(title, content, isFavorite, Main.user!!.id))
                 dialog.dismiss()
             }
             .setNegativeButton("Cancelar") { dialog, id ->
