@@ -3,5 +3,7 @@
     <color name="colorPrimary">#ffab00</color>
     <color name="colorPrimaryDark">#c67c00</color>
     <color name="colorAccent">#ffdd4b</color>
-    <color name="gray_buttons">#a1a39e</color>
+    <color name="gray_buttons">#6d6e6a</color>
+        <color name="gray_buttons_disable">#d0d4cb</color>
+    <color name="gray_text_buttons_disable">#b5b3b3</color>
 </resources>

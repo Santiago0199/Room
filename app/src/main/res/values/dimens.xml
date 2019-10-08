@@ -18,4 +18,6 @@
     <dimen name="uno_dp">1dp</dimen>
     <dimen name="treinta_px">30px</dimen>
     <dimen name="veinte_px">20px</dimen>
+    <dimen name="setenta_dp">70dp</dimen>
+    <dimen name="cuarentaycinco_dp">45dp</dimen>
 </resources>

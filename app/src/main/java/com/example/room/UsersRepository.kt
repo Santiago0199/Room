@@ -12,6 +12,10 @@ class UsersRepository(private val userDao: UserDao) {
         return userDao.findUser(email, password)
     }
 
+    fun findUserByEmail(email:String): LiveData<UserEntity>{
+        return userDao.findUserByEmail(email)
+    }
+
     suspend fun insert(user: UserEntity){
         userDao.insert(user)
     }

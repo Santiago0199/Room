@@ -9,12 +9,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/contentLogin"
         android:background="@color/colorPrimary"
         android:padding="@dimen/dieciseis_dp"
         tools:context=".MainActivity">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/bookLogin"
             android:layout_width="@dimen/cien_dp"
             android:layout_height="@dimen/cien_dp"
             android:layout_marginTop="@dimen/dieciseis_dp"
@@ -31,11 +32,11 @@
             android:layout_marginTop="@dimen/ocho_dp"
             android:layout_marginEnd="@dimen/ocho_dp"
             android:text="@string/mynotes"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="@dimen/treinta_sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/bookLogin" />
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -44,6 +45,7 @@
             android:layout_marginTop="@dimen/treintaydos_dp"
             android:ems="10"
             android:hint="@string/email"
+            android:text=""
             android:background="@drawable/style_edit_text"
             android:inputType="textEmailAddress"
             android:padding="@dimen/ocho_dp"
@@ -57,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ocho_dp"
             android:ems="10"
+            android:text=""
             android:hint="@string/contrasena"
             android:background="@drawable/style_edit_text"
             android:inputType="textPassword"
@@ -73,9 +76,10 @@
             android:layout_marginLeft="@dimen/cincuenta_dp"
             android:layout_marginRight="@dimen/cincuenta_dp"
             android:layout_marginTop="@dimen/ochenta_dp"
-            android:background="@drawable/style_buttons"
+            android:background="@drawable/style_button_disable"
             android:text="@string/entrar"
-            android:textColor="@android:color/black"
+            android:enabled="false"
+            android:textColor="@color/gray_text_buttons_disable"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />

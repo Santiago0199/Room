@@ -21,6 +21,10 @@ class NewUserViewModel(application: Application): AndroidViewModel(application) 
         usersRepository = UsersRepository(userDao)
     }
 
+    fun findUserByEmail(email: String): LiveData<UserEntity> {
+        return usersRepository.findUserByEmail(email)
+    }
+
     fun findUser(email: String, password: String): LiveData<UserEntity> {
         return usersRepository.findUser(email, password)
     }

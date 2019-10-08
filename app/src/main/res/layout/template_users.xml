@@ -7,9 +7,8 @@
 
     <ImageView
         android:id="@+id/imageUser"
-        android:layout_width="71dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="@dimen/ocho_dp"
+        android:layout_width="@dimen/setenta_dp"
+        android:layout_height="@dimen/cuarentaycinco_dp"
         android:layout_marginTop="@dimen/dieciseis_dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,8 +18,6 @@
         android:id="@+id/emailUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dieciseis_dp"
-        android:layout_marginBottom="@dimen/ocho_dp"
         android:text="TextView"
         android:textColor="@android:color/black"
         android:textSize="@dimen/veinticinco_dp"
