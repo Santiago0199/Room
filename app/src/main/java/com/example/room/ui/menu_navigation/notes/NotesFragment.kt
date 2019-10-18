@@ -7,12 +7,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.room.EditNoteFragment
 import com.example.room.Main
 import com.example.room.ui.adapter.NotesAdapter
 import com.example.room.R
 import com.example.room.db.entities.NoteEntity
-import com.example.room.db.entities.UserEntity
-import com.example.room.ui.menu_navigation.new_note.NewNoteFragment
+import com.example.room.NewNoteFragment
+import com.example.room.view_model.NotesViewModel
 
 class NotesFragment : Fragment() {
 
@@ -30,6 +31,13 @@ class NotesFragment : Fragment() {
             listNotes = ArrayList()
             recycler.layoutManager = LinearLayoutManager(activity!!, RecyclerView.VERTICAL, false)
             adapter = NotesAdapter(listNotes)
+            adapter.onClickItem(View.OnClickListener { p0 ->
+                val bundle = Bundle()
+                bundle.putSerializable("NOTE", adapter.items!!.get(recycler.getChildAdapterPosition(p0)))
+                val dialogEditFragment = EditNoteFragment()
+                dialogEditFragment.arguments = bundle
+                dialogEditFragment.show(activity!!.supportFragmentManager, "EditNote")
+            })
             recycler.adapter = adapter
         }
 

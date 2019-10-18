@@ -12,7 +12,7 @@
         android:id="@+id/contentLogin"
         android:background="@color/colorPrimary"
         android:padding="@dimen/dieciseis_dp"
-        tools:context=".MainActivity">
+        tools:context=".LoginActivity">
 
         <ImageView
             android:id="@+id/bookLogin"

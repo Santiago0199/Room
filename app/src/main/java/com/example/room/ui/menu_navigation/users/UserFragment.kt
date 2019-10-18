@@ -1,5 +1,7 @@
 package com.example.room.ui.menu_navigation.users
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.room.R
 import com.example.room.db.entities.UserEntity
 import com.example.room.ui.adapter.UsersAdapter
+import com.example.room.view_model.UserViewModel
 
 class UserFragment : Fragment() {
 
@@ -32,6 +35,18 @@ class UserFragment : Fragment() {
             adapter = UsersAdapter(arrayList)
             recycler = root
             recycler.layoutManager = LinearLayoutManager(activity!!, RecyclerView.VERTICAL, false)
+
+            adapter.onClickItem(View.OnClickListener { p0 ->
+                AlertDialog.Builder(context)
+                    .setTitle("¿Deseas eliminar el usuario?")
+                    .setNegativeButton("Cancelar"){dialog, which -> dialog.dismiss() }
+                    .setPositiveButton("Aceptar"){dialog, which ->
+                        val userViewModel = ViewModelProviders.of(this).get(UserViewModel::class.java)
+                        userViewModel.delete(adapter.items!!.get(recycler.getChildAdapterPosition(p0)))
+                    }
+                    .show()
+            })
+
             recycler.adapter = adapter
         }
 

@@ -4,5 +4,5 @@
     android:id="@+id/recycler_favorites"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/ocho_dp">
+    android:layout_marginTop="@dimen/cinco_dp">
 </androidx.recyclerview.widget.RecyclerView>

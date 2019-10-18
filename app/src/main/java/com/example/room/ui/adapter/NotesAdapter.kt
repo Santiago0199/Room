@@ -1,5 +1,6 @@
 package com.example.room.ui.adapter
 
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +10,10 @@ import android.widget.TextView
 import com.example.room.R
 import com.example.room.db.entities.NoteEntity
 
-class NotesAdapter(items: List<NoteEntity>): RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
+class NotesAdapter(items: List<NoteEntity>): RecyclerView.Adapter<NotesAdapter.ViewHolder>(), View.OnClickListener {
 
     var items: List<NoteEntity>? = null
+    lateinit var listener: View.OnClickListener
 
     init {
         this.items = items
@@ -19,6 +21,7 @@ class NotesAdapter(items: List<NoteEntity>): RecyclerView.Adapter<NotesAdapter.V
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var v = LayoutInflater.from(parent.context).inflate(R.layout.template_notes, null)
+        v.setOnClickListener(this)
         var holder = ViewHolder(v)
         return holder
     }
@@ -32,8 +35,16 @@ class NotesAdapter(items: List<NoteEntity>): RecyclerView.Adapter<NotesAdapter.V
         holder.tvTitle.text = item!!.title!!.capitalize()
         holder.tvContent.text = item!!.content!!.capitalize()
         if(item?.favorite!!) {
-            holder.ivFavorite.setImageResource(R.drawable.ic_star_black_24dp);
+            holder.ivFavorite.setImageResource(R.drawable.ic_star_black_24dp)
         }
+    }
+
+    fun onClickItem(listener: View.OnClickListener){
+        this.listener = listener
+    }
+
+    override fun onClick(v: View?) {
+        listener.onClick(v)
     }
 
     fun setListNotes(notes: List<NoteEntity>){
@@ -50,6 +61,7 @@ class NotesAdapter(items: List<NoteEntity>): RecyclerView.Adapter<NotesAdapter.V
             tvContent = view.findViewById(R.id.textViewContent)
             ivFavorite = view.findViewById(R.id.imageViewFavorite)
         }
+
         override fun toString(): String {
             return super.toString() + " '" + tvTitle.getText() + "'"
         }

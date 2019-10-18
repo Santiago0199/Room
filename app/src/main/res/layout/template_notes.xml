@@ -51,6 +51,8 @@
                 android:layout_marginTop="@dimen/ocho_dp"
                 android:layout_marginEnd="@dimen/ocho_dp"
                 android:textStyle="italic"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:layout_marginStart="@dimen/ocho_dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textViewTitle"

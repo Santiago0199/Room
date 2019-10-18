@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
         android:id="@+id/content"
-        tools:context=".ui.user.new_user.NewUserActivity">
+        tools:context=".ui.user..NewUserActivity">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"

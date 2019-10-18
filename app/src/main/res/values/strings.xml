@@ -14,4 +14,8 @@
     <string name="registrarme">Registrarme</string>
     <string name="register">Registrar</string>
     <string name="registro">Registro</string>
+    <string name="editFavorite">¿Es favorita?</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

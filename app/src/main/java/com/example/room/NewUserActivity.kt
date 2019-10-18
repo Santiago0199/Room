@@ -1,6 +1,5 @@
-package com.example.room.ui.user.new_user
+package com.example.room.ui.user
 
-import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
@@ -8,24 +7,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
-import android.view.KeyboardShortcutGroup
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import com.example.room.R
 import com.example.room.db.entities.UserEntity
-import android.view.ViewTreeObserver
 import android.graphics.Rect
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import com.example.room.Main
 import com.example.room.NotesActivity
+import com.example.room.view_model.UserViewModel
 
 
 class NewUserActivity : AppCompatActivity(), TextWatcher{
@@ -55,7 +51,7 @@ class NewUserActivity : AppCompatActivity(), TextWatcher{
         password.addTextChangedListener(this)
 
         reg.setOnClickListener {
-            val viewModelUser = ViewModelProviders.of(this).get(NewUserViewModel::class.java)
+            val viewModelUser = ViewModelProviders.of(this).get(UserViewModel::class.java)
             viewModelUser.findUserByEmail(email = email.text.toString()).observe(this, Observer {
                 user -> user.let {
                     if(user != null){

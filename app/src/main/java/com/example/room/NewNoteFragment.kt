@@ -1,17 +1,14 @@
-package com.example.room.ui.menu_navigation.new_note
+package com.example.room
 
 import android.app.Dialog
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.DialogFragment
-import com.example.room.R
 import android.widget.Switch
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
-import com.example.room.Main
 import com.example.room.db.entities.NoteEntity
-import com.example.room.db.entities.UserEntity
+import com.example.room.view_model.NotesViewModel
 
 class NewNoteFragment : DialogFragment() {
 
@@ -33,7 +30,7 @@ class NewNoteFragment : DialogFragment() {
                 val isFavorite = swNoteFavorite!!.isChecked
 
                 // Comunicar al ViewModel el nuevo dato.
-                val mViewModel = ViewModelProviders.of(activity!!).get(NewNoteViewModel::class.java!!)
+                val mViewModel = ViewModelProviders.of(activity!!).get(NotesViewModel::class.java!!)
                 mViewModel.insert(NoteEntity(title, content, isFavorite, Main.user!!.id))
                 dialog.dismiss()
             }
@@ -41,7 +38,7 @@ class NewNoteFragment : DialogFragment() {
                 dialog.dismiss()
             }
 
-        var view = activity!!.layoutInflater.inflate(R.layout.new_note_fragment, null)
+        var view = activity!!.layoutInflater.inflate(R.layout.fragment_new_note, null)
 
         etTitle = view!!.findViewById(R.id.edTitle)
         etContent = view.findViewById(R.id.edContent)

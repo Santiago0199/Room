@@ -1,30 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/imageUser"
-        android:layout_width="@dimen/setenta_dp"
-        android:layout_height="@dimen/cuarentaycinco_dp"
-        android:layout_marginTop="@dimen/dieciseis_dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_account_box_black_24dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/emailUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@android:color/black"
-        android:textSize="@dimen/veinticinco_dp"
-        android:lines="1"
-        android:ellipsize="end"
-        app:layout_constraintBottom_toBottomOf="@+id/imageUser"
-        app:layout_constraintStart_toEndOf="@+id/imageUser"
-        app:layout_constraintTop_toTopOf="@+id/imageUser" />
+        <ImageView
+            android:id="@+id/imageUser"
+            android:layout_width="@dimen/setenta_dp"
+            android:layout_height="@dimen/cuarentaycinco_dp"
+            android:layout_marginTop="@dimen/dieciseis_dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_account_box_black_24dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/emailUser"
+            android:layout_width="@dimen/cero_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/ocho_dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imageUser"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageUser"
+            app:layout_constraintTop_toTopOf="@+id/imageUser"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

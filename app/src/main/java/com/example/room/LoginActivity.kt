@@ -1,6 +1,5 @@
 package com.example.room
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Rect
@@ -17,12 +16,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.room.ui.user.new_user.NewUserViewModel
-import com.example.room.ui.user.new_user.NewUserActivity
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_new_user.*
+import com.example.room.ui.user.NewUserActivity
+import com.example.room.view_model.UserViewModel
 
-class MainActivity : AppCompatActivity(), TextWatcher {
+class LoginActivity : AppCompatActivity(), TextWatcher {
 
     private lateinit var content: ConstraintLayout
     private lateinit var editTextEmail: EditText
@@ -32,7 +29,7 @@ class MainActivity : AppCompatActivity(), TextWatcher {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         init()
         keyboard()
@@ -48,7 +45,7 @@ class MainActivity : AppCompatActivity(), TextWatcher {
         editTextPassword.addTextChangedListener(this)
 
         buttonLogin.setOnClickListener {
-            val viewModelUser = ViewModelProviders.of(this).get(NewUserViewModel::class.java)
+            val viewModelUser = ViewModelProviders.of(this).get(UserViewModel::class.java)
             viewModelUser.findUser(editTextEmail.text.toString(), editTextPassword.text.toString()).observe(this, Observer {
                     user -> user.let{
                 if(user != null){
