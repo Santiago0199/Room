@@ -1,16 +1,20 @@
 package com.example.room.db
 
 import android.content.Context
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.room.*
 import com.example.room.db.dao.NoteDao
 import com.example.room.db.entities.NoteEntity
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.room.LoginActivity
 import com.example.room.db.dao.UserDao
 import com.example.room.db.entities.UserEntity
+import com.example.room.view_model.UserViewModel
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import java.io.Serializable
 
 @Database(entities = arrayOf(UserEntity::class, NoteEntity::class), version = 1)
 abstract class NotesRoomDatabase: RoomDatabase() {
@@ -34,7 +38,7 @@ abstract class NotesRoomDatabase: RoomDatabase() {
             }
             synchronized(this) {
                 val instance = Room.databaseBuilder(context.applicationContext, NotesRoomDatabase::class.java, "notas")
-                    //.addCallback(NoteDatabaseCallback(scope))
+                    .addCallback(NoteDatabaseCallback(scope))
                     .build()
                 INSTANCE = instance
                 return instance
@@ -42,7 +46,7 @@ abstract class NotesRoomDatabase: RoomDatabase() {
         }
     }
 
-    /*private class NoteDatabaseCallback(private val scope: CoroutineScope) : RoomDatabase.Callback() {
+    class NoteDatabaseCallback(private val scope: CoroutineScope) : RoomDatabase.Callback() {
         /**
          * Inicia una rutina en el IO Dispatcher.
          */
@@ -51,27 +55,25 @@ abstract class NotesRoomDatabase: RoomDatabase() {
             INSTANCE?.let { database ->
                 scope.launch {
                     //Consultas al iniciar la aplicacion
-                    //var wordDao = database.noteDao()
-                    //wordDao.deleteAll()
+                    val userDao = database.userDao()
+                    userDao.deleteAll()
                 }
             }
         }
-    }*/
+    }
 
-    class UserTypeConverter: Serializable {
-
+    /*class UserTypeConverter: Serializable {
         @TypeConverter
         fun convertToString(user: UserEntity): String? {
             var gson = Gson()
             var str = gson.toJson(user, UserEntity::class.java)
             return str
         }
-
         @TypeConverter
         fun convertToUser(str: String): UserEntity {
             var gson = Gson()
             var user = gson.fromJson(str, UserEntity::class.java)
             return user
         }
-    }
+    }*/
 }

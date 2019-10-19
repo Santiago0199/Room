@@ -13,7 +13,7 @@ import java.io.Serializable
                     onDelete = ForeignKey.CASCADE,
                     onUpdate = ForeignKey.CASCADE)))
 
-@TypeConverters(NotesRoomDatabase.UserTypeConverter::class)
+//@TypeConverters(NotesRoomDatabase.UserTypeConverter::class)
 class NoteEntity(title: String, content:String, favorite: Boolean, user_id: Long): Serializable {
 
     @PrimaryKey(autoGenerate = true)

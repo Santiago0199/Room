@@ -16,7 +16,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.example.room.db.entities.NoteEntity
+import com.example.room.db.entities.UserEntity
 import com.example.room.ui.user.NewUserActivity
+import com.example.room.view_model.NotesViewModel
 import com.example.room.view_model.UserViewModel
 
 class LoginActivity : AppCompatActivity(), TextWatcher {
