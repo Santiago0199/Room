@@ -16,8 +16,11 @@ interface UserDao {
     @Query("DELETE FROM users")
     suspend fun deleteAll()
 
+    @Query("SELECT * FROM users WHERE id = :id LIMIT 1")
+    fun findUserById(id:Long):LiveData<UserEntity>
+
     @Query("SELECT * FROM users WHERE email = :email AND password = :password LIMIT 1")
-    fun findUser(email: String, password: String):LiveData<UserEntity>
+    fun findUserByEmailPassword(email: String, password: String):LiveData<UserEntity>
 
     @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
     fun findUserByEmail(email:String):LiveData<UserEntity>

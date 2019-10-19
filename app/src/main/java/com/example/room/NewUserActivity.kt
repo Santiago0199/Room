@@ -52,23 +52,30 @@ class NewUserActivity : AppCompatActivity(), TextWatcher{
 
         reg.setOnClickListener {
             val viewModelUser = ViewModelProviders.of(this).get(UserViewModel::class.java)
-            viewModelUser.findUserByEmail(email = email.text.toString()).observe(this, Observer {
+            val emailNewUser = email.text.toString()
+            val passwordNewUser = password.text.toString()
+
+            viewModelUser.findUserByEmail(emailNewUser).observe(this, Observer {
                 user -> user.let {
                     if(user != null){
                         AlertDialog.Builder(this)
-                            .setTitle("Error")
-                            .setMessage("El usuario ya se encuentra registrado")
-                            .setPositiveButton("Aceptar", DialogInterface.OnClickListener { dialog, which ->
+                            .setTitle("Error").setMessage("El usuario ya se encuentra registrado")
+                            .setPositiveButton("Aceptar") {dialog, which ->
                                 dialog.dismiss()
-                            })
-                            .show()
+                            }.show()
                     }else{
-                        val user = UserEntity(email = email.text.toString(), password = password.text.toString())
-                        viewModelUser.insert(user)
-                        Main.user = user
-                        val intent = Intent(applicationContext, NotesActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)
+                        val newUser = UserEntity(emailNewUser, passwordNewUser)
+                        viewModelUser.insert(newUser)
+                        viewModelUser.findUserByEmailPassword(emailNewUser, passwordNewUser).observe(this, Observer {
+                             user -> user.let{
+                                if(user != null){
+                                    Main.user = user
+                                    val intent = Intent(applicationContext, NotesActivity::class.java)
+                                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                    startActivity(intent)
+                                }
+                            }
+                        })
                     }
                 }
             })

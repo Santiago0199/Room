@@ -8,8 +8,12 @@ class UsersRepository(private val userDao: UserDao) {
 
     val allUsers: LiveData<List<UserEntity>> = userDao.getAll()
 
-    fun findUser(email: String, password: String): LiveData<UserEntity> {
-        return userDao.findUser(email, password)
+    fun findUserById(id: Long): LiveData<UserEntity>{
+        return userDao.findUserById(id)
+    }
+
+    fun findUserByEmailPassword(email: String, password: String): LiveData<UserEntity> {
+        return userDao.findUserByEmailPassword(email, password)
     }
 
     fun findUserByEmail(email:String): LiveData<UserEntity>{

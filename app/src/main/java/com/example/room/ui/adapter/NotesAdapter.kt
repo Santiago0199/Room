@@ -36,6 +36,8 @@ class NotesAdapter(items: List<NoteEntity>): RecyclerView.Adapter<NotesAdapter.V
         holder.tvContent.text = item!!.content!!.capitalize()
         if(item?.favorite!!) {
             holder.ivFavorite.setImageResource(R.drawable.ic_star_black_24dp)
+        }else{
+            holder.ivFavorite.setImageResource(R.drawable.ic_star_border_black_24dp)
         }
     }
 

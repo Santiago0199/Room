@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -22,18 +23,22 @@ import com.example.room.ui.user.NewUserActivity
 import com.example.room.view_model.NotesViewModel
 import com.example.room.view_model.UserViewModel
 
-class LoginActivity : AppCompatActivity(), TextWatcher {
+class LoginActivity : AppCompatActivity(), TextWatcher, View.OnClickListener {
 
     private lateinit var content: ConstraintLayout
     private lateinit var editTextEmail: EditText
     private lateinit var editTextPassword: EditText
     private lateinit var book: ImageView
     private lateinit var buttonLogin: Button
+    private lateinit var faceboook: ImageView
+    private lateinit var twitter: ImageView
+    private lateinit var instagram: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        supportActionBar!!.hide()
         init()
         keyboard()
     }
@@ -44,12 +49,15 @@ class LoginActivity : AppCompatActivity(), TextWatcher {
         editTextEmail = findViewById(R.id.editTextEmail)
         editTextPassword = findViewById(R.id.editTextPassword)
         buttonLogin = findViewById(R.id.buttonLogin)
+        faceboook = findViewById(R.id.imageView2)
+        instagram = findViewById(R.id.imageView3)
+        twitter = findViewById(R.id.imageView4)
         editTextEmail.addTextChangedListener(this)
         editTextPassword.addTextChangedListener(this)
 
         buttonLogin.setOnClickListener {
             val viewModelUser = ViewModelProviders.of(this).get(UserViewModel::class.java)
-            viewModelUser.findUser(editTextEmail.text.toString(), editTextPassword.text.toString()).observe(this, Observer {
+            viewModelUser.findUserByEmailPassword(editTextEmail.text.toString(), editTextPassword.text.toString()).observe(this, Observer {
                     user -> user.let{
                 if(user != null){
                     Main.user = user
@@ -71,6 +79,14 @@ class LoginActivity : AppCompatActivity(), TextWatcher {
         buttonRegister.setOnClickListener {
             startActivity(Intent(this, NewUserActivity::class.java))
         }
+
+        faceboook.setOnClickListener(this)
+        instagram.setOnClickListener(this)
+        twitter.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        Toast.makeText(this, "Estamos trabajando en ello.", Toast.LENGTH_SHORT).show()
     }
 
     fun keyboard(){
@@ -81,8 +97,14 @@ class LoginActivity : AppCompatActivity(), TextWatcher {
             val keypadHeight = screenHeight - r.bottom
             if (keypadHeight > screenHeight * 0.15) {
                 book.visibility = View.GONE
+                faceboook.visibility = View.GONE
+                instagram.visibility = View.GONE
+                twitter.visibility = View.GONE
             } else {
                 book.visibility = View.VISIBLE
+                faceboook.visibility = View.VISIBLE
+                instagram.visibility = View.VISIBLE
+                twitter.visibility = View.VISIBLE
             }
         }
     }

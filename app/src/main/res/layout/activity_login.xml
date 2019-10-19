@@ -7,9 +7,9 @@
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contentLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/contentLogin"
         android:background="@color/colorPrimary"
         android:padding="@dimen/dieciseis_dp"
         tools:context=".LoginActivity">
@@ -43,12 +43,12 @@
             android:layout_width="@dimen/cero_dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/treintaydos_dp"
+            android:background="@drawable/style_edit_text"
             android:ems="10"
             android:hint="@string/email"
-            android:text=""
-            android:background="@drawable/style_edit_text"
             android:inputType="textEmailAddress"
             android:padding="@dimen/ocho_dp"
+            android:text=""
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -58,12 +58,12 @@
             android:layout_width="@dimen/cero_dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ocho_dp"
-            android:ems="10"
-            android:text=""
-            android:hint="@string/contrasena"
             android:background="@drawable/style_edit_text"
+            android:ems="10"
+            android:hint="@string/contrasena"
             android:inputType="textPassword"
             android:padding="@dimen/ocho_dp"
+            android:text=""
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -74,11 +74,11 @@
             android:layout_width="@dimen/cero_dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/cincuenta_dp"
+            android:layout_marginTop="@dimen/cincuenta_dp"
             android:layout_marginRight="@dimen/cincuenta_dp"
-            android:layout_marginTop="@dimen/ochenta_dp"
             android:background="@drawable/style_button_disable"
-            android:text="@string/entrar"
             android:enabled="false"
+            android:text="@string/entrar"
             android:textColor="@color/gray_text_buttons_disable"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -106,6 +106,7 @@
             app:layout_constraintEnd_toStartOf="@+id/imageView4"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@id/register"
             app:srcCompat="@drawable/ic_social_instagram_circle" />
 
         <ImageView
@@ -138,15 +139,18 @@
             android:id="@+id/register"
             android:layout_width="@dimen/cero_dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/registrarme"
             android:layout_marginLeft="@dimen/cincuenta_dp"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="@dimen/cincuenta_dp"
             android:background="@drawable/style_buttons"
+            android:text="@string/registrarme"
             android:textColor="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/imageView3"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

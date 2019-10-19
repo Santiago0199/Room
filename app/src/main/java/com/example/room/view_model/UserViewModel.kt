@@ -23,12 +23,16 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         allUsers = repository.allUsers
     }
 
+    fun findUserById(id: Long): LiveData<UserEntity> {
+        return repository.findUserById(id)
+    }
+
     fun findUserByEmail(email: String): LiveData<UserEntity> {
         return repository.findUserByEmail(email)
     }
 
-    fun findUser(email: String, password: String): LiveData<UserEntity> {
-        return repository.findUser(email, password)
+    fun findUserByEmailPassword(email: String, password: String): LiveData<UserEntity> {
+        return repository.findUserByEmailPassword(email, password)
     }
 
     fun insert(user: UserEntity) = viewModelScope.launch {
