@@ -1,4 +1,4 @@
-package com.example.room
+package com.example.room.ui.notes
 
 import android.app.Dialog
 import androidx.lifecycle.ViewModelProviders
@@ -7,8 +7,11 @@ import androidx.fragment.app.DialogFragment
 import android.widget.Switch
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import com.example.room.R
+import com.example.room.common.Const
+import com.example.room.common.SharedPreferencesManager
 import com.example.room.db.entities.NoteEntity
-import com.example.room.view_model.NotesViewModel
+import com.example.room.db.data.NotesViewModel
 
 class NewNoteFragment : DialogFragment() {
 
@@ -17,28 +20,24 @@ class NewNoteFragment : DialogFragment() {
     private var swNoteFavorite: Switch? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-
-        // Use the Builder class for convenient dialog construction
         val builder = AlertDialog.Builder(activity!!)
+        val view = activity!!.layoutInflater.inflate(R.layout.fragment_new_note, null)
 
         builder.setTitle("Nueva nota")
             .setMessage("Introduzca los datos de la nueva nota")
-            .setPositiveButton("Guardar"){ dialog, id ->
+            .setPositiveButton("Guardar"){ dialog, _ ->
 
                 val title = etTitle!!.text.toString()
-                val content = etContent!!.getText().toString()
+                val content = etContent!!.text.toString()
                 val isFavorite = swNoteFavorite!!.isChecked
 
-                // Comunicar al ViewModel el nuevo dato.
-                val mViewModel = ViewModelProviders.of(activity!!).get(NotesViewModel::class.java!!)
-                mViewModel.insert(NoteEntity(title, content, isFavorite, Main.user!!.id))
+                val mViewModel = ViewModelProviders.of(activity!!).get(NotesViewModel::class.java)
+                mViewModel.insert(NoteEntity(title, content, isFavorite, SharedPreferencesManager.getSomeLongValue(Const.ID_USER)))
                 dialog.dismiss()
             }
-            .setNegativeButton("Cancelar") { dialog, id ->
+            .setNegativeButton("Cancelar") { dialog, _ ->
                 dialog.dismiss()
             }
-
-        var view = activity!!.layoutInflater.inflate(R.layout.fragment_new_note, null)
 
         etTitle = view!!.findViewById(R.id.edTitle)
         etContent = view.findViewById(R.id.edContent)
@@ -46,7 +45,6 @@ class NewNoteFragment : DialogFragment() {
 
         builder.setView(view)
 
-        // Create the AlertDialog object and return it
         return builder.create()
     }
 }

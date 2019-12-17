@@ -1,13 +1,11 @@
-package com.example.room.view_model
+package com.example.room.db.data
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.room.NotesRepository
 import com.example.room.db.NotesRoomDatabase
 import com.example.room.db.entities.NoteEntity
-import com.example.room.db.entities.UserEntity
 import kotlinx.coroutines.launch
 
 class NotesViewModel(application: Application) : AndroidViewModel(application) {
@@ -27,7 +25,10 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
         return repository.getByUser(idUser)
     }
 
-    //viewModelScope lanza una subrutina
+    fun getFavoritesByUser(idUser: Long): LiveData<List<NoteEntity>>{
+        return repository.getFavoritesByUser(idUser)
+    }
+
     fun insert(note: NoteEntity) = viewModelScope.launch {
         repository.insert(note)
     }

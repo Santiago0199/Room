@@ -1,7 +1,6 @@
-package com.example.room.ui.menu_navigation.users
+package com.example.room.ui.users
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.room.R
 import com.example.room.db.entities.UserEntity
-import com.example.room.ui.adapter.UsersAdapter
-import com.example.room.view_model.UserViewModel
+import com.example.room.db.data.UserViewModel
 
 class UserFragment : Fragment() {
 

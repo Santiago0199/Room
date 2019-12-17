@@ -1,9 +1,8 @@
-package com.example.room.ui.adapter
+package com.example.room.ui.users
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.room.R

@@ -17,13 +17,13 @@ interface UserDao {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM users WHERE id = :id LIMIT 1")
-    fun findUserById(id:Long):LiveData<UserEntity>
+    fun findUserById(id:Long):UserEntity
 
     @Query("SELECT * FROM users WHERE email = :email AND password = :password LIMIT 1")
-    fun findUserByEmailPassword(email: String, password: String):LiveData<UserEntity>
+    fun findUserByEmailPassword(email: String, password: String):UserEntity
 
     @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
-    fun findUserByEmail(email:String):LiveData<UserEntity>
+    fun findUserByEmail(email:String):UserEntity
 
     @Query("SELECT * FROM users ORDER BY email ASC")
     fun getAll():LiveData<List<UserEntity>>

@@ -1,22 +1,17 @@
 package com.example.room.db
 
 import android.content.Context
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.room.*
 import com.example.room.db.dao.NoteDao
 import com.example.room.db.entities.NoteEntity
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.room.LoginActivity
+import com.example.room.common.Const
 import com.example.room.db.dao.UserDao
 import com.example.room.db.entities.UserEntity
-import com.example.room.view_model.UserViewModel
-import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = arrayOf(UserEntity::class, NoteEntity::class), version = 1)
+@Database(entities = [UserEntity::class, NoteEntity::class], version = 1)
 abstract class NotesRoomDatabase: RoomDatabase() {
 
     abstract fun noteDao(): NoteDao
@@ -30,16 +25,17 @@ abstract class NotesRoomDatabase: RoomDatabase() {
         /**
          * Crea la instancia de la BD
          * @param scope variable utlizada para lanzar una subrutina
+         * fun getDatabase(context: Context, scope: CoroutineScope): NotesRoomDatabase {
          */
-        fun getDatabase(context: Context, scope: CoroutineScope): NotesRoomDatabase {
+        fun getDatabase(context: Context): NotesRoomDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
             }
             synchronized(this) {
-                val instance = Room.databaseBuilder(context.applicationContext, NotesRoomDatabase::class.java, "notas")
-                    .addCallback(NoteDatabaseCallback(scope))
+                val instance = Room.databaseBuilder(context.applicationContext, NotesRoomDatabase::class.java, Const.NOTES)
                     .build()
+                    //.addCallback(NoteDatabaseCallback(scope))
                 INSTANCE = instance
                 return instance
             }
@@ -47,9 +43,6 @@ abstract class NotesRoomDatabase: RoomDatabase() {
     }
 
     class NoteDatabaseCallback(private val scope: CoroutineScope) : RoomDatabase.Callback() {
-        /**
-         * Inicia una rutina en el IO Dispatcher.
-         */
         override fun onOpen(db: SupportSQLiteDatabase) {
             super.onOpen(db)
             INSTANCE?.let { database ->

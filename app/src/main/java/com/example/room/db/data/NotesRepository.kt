@@ -1,4 +1,4 @@
-package com.example.room
+package com.example.room.db.data
 
 import androidx.lifecycle.LiveData
 import com.example.room.db.dao.NoteDao
@@ -11,6 +11,10 @@ class NotesRepository(private val noteDao: NoteDao) {
     val allFavorites: LiveData<List<NoteEntity>> = noteDao.getFavorites()
 
     fun getByUser(idUser: Long): LiveData<List<NoteEntity>>{
+        return noteDao.getByUser(idUser)
+    }
+
+    fun getFavoritesByUser(idUser: Long): LiveData<List<NoteEntity>>{
         return noteDao.getByUser(idUser)
     }
 
